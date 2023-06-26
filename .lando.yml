@@ -1,0 +1,38 @@
+name: xtremelaravel
+recipe: laravel
+config:
+  webroot: public
+  php: '8.0'
+  composer_version: '2.0.7'
+  via: nginx
+  database: mysql
+  cache: redis
+  xdebug: true
+services:
+  node:
+    type: node:16
+    scanner: false
+    build:
+      - npm install
+  mail:
+    type: mailhog
+    portforward: true
+    hogfrom:
+      - appserver
+  pma:
+    type: phpmyadmin
+    hosts:
+      - database
+tooling:
+  migrate:
+    service: appserver
+    cmd: php artisan migrate
+  npm:
+    service: node
+    cmd: npm
+proxy: 
+  mail:
+    - mail.xtremelaravel.lndo.site 
+  pma:
+    - pma.xtremelaravel.lndo.site
+ 
