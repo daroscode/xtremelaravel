@@ -7,6 +7,15 @@ Laravel Based project.
 - lando composer install
 - lando artisan key:generate
 
+# Database:
+- Dump: lando db-export /db/backup.sql
+- Import: lando db-import /db/backup.sql
+
+# Laravel:
+- Create Model: lando artisan make:model Name --migration 
+- Create Controller: lando artisan make:controller NameController --api
+- Update Database: lando artisan migrate
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
